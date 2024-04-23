@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -130,3 +131,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CELERY_BROKER_URL = f"redis://{os.getenv('REDIS_HOST')}:6379"
+
+CELERY_RESULT_BACKEND = f"redis://{os.getenv('REDIS_HOST')}:6379"
+
+CELERY_TIMEZONE = "UTC"
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BEAT_SCHEDULE = {
+    'calculate_analytics': {
+        'task': 'main.tasks.calculate_analytics',
+        'schedule': timedelta(minutes=60),
+    },
+}
