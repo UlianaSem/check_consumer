@@ -42,3 +42,15 @@ class Category(models.Model):
                 fields=('name', 'place',),
                 name='Unique name and place', ),
         ]
+
+
+class Check(models.Model):
+    check_json = models.JSONField(verbose_name="Чек")
+    is_calculated = models.BooleanField(default=False, verbose_name="Посчитан")
+
+    def __str__(self):
+        return f'{self.id}'
+
+    class Meta:
+        verbose_name = "Чек для аналитики"
+        verbose_name_plural = "Чеки для аналитики"
