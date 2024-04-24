@@ -148,3 +148,9 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(minutes=60),
     },
 }
+
+KAFKA_HOST = os.getenv('KAFKA_HOST')
+
+KAFKA_CLIENT = os.getenv('KAFKA_CLIENT')
+
+KAFKA_RESET = os.getenv('KAFKA_RESET')
