@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'drf_spectacular',
 
     'main',
 ]
@@ -154,3 +155,7 @@ KAFKA_HOST = os.getenv('KAFKA_HOST')
 KAFKA_CLIENT = os.getenv('KAFKA_CLIENT')
 
 KAFKA_RESET = os.getenv('KAFKA_RESET')
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
