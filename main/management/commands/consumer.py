@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         config = {
-            'bootstrap.servers': f'{settings.KAFKA_HOST}:9092',
+            'bootstrap.servers': f'{settings.KAFKA_HOST}:{settings.KAFKA_PORT}',
             'client.id': settings.KAFKA_CLIENT,
             'group.id': settings.KAFKA_CLIENT,
             'auto.offset.reset': settings.KAFKA_RESET
